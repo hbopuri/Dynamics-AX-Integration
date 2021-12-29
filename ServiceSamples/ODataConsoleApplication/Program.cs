@@ -27,7 +27,8 @@ namespace ODataConsoleApplication
             // Uncomment below to run specific examples
 
             // 1. Simple query examples
-
+            QueryExamples.GetReportingManager(context,"hbopuri@smart-structures.com");
+            QueryExamples.GetReportingManager(context,"hnagilla@smart-structures.com");
             QueryExamples.ReadLegalEntities(context);
             // QueryExamples.GetInlineQueryCount(context);
             // QueryExamples.GetTopRecords(context);

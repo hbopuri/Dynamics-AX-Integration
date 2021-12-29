@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,23 +14,35 @@ namespace AuthenticationUtility
         public static ClientConfiguration OneBox = new ClientConfiguration()
         {
             // You only need to populate this section if you are logging on via a native app. For Service to Service scenarios in which you e.g. use a service principal you don't need that.
-            UriString = "https://usnconeboxax1aos.cloud.onebox.dynamics.com/",
-            UserName = "tusr1@TAEOfficial.ccsctp.net",            
+            //UriString = "https://usnconeboxax1aos.cloud.onebox.dynamics.com/",
+            //UserName = "tusr1@TAEOfficial.ccsctp.net",            
+            //// Insert the correct password here for the actual test.
+            //Password = "",
+
+            UriString = "https://sigerp.operations.dynamics.com/",
+            UserName = "",
             // Insert the correct password here for the actual test.
             Password = "",
 
             // You need this only if you logon via service principal using a client secret. See: https://docs.microsoft.com/en-us/dynamics365/unified-operations/dev-itpro/data-entities/services-home-page to get more data on how to populate those fields.
             // You can find that under AAD in the azure portal
-            ActiveDirectoryResource = "https://usnconeboxax1aos.cloud.onebox.dynamics.com", // Don't have a trailing "/". Note: Some of the sample code handles that issue.
-            ActiveDirectoryTenant = "https://login.windows-ppe.net/TAEOfficial.ccsctp.net", // Some samples: https://login.windows.net/yourtenant.onmicrosoft.com, https://login.windows.net/microsoft.com
-            ActiveDirectoryClientAppId = "d8a9a121-b463-41f6-a86c-041272bdb340",
+            //ActiveDirectoryResource = "https://usnconeboxax1aos.cloud.onebox.dynamics.com", // Don't have a trailing "/". Note: Some of the sample code handles that issue.
+            //ActiveDirectoryTenant = "https://login.windows-ppe.net/TAEOfficial.ccsctp.net", // Some samples: https://login.windows.net/yourtenant.onmicrosoft.com, https://login.windows.net/microsoft.com
+            //ActiveDirectoryClientAppId = "d8a9a121-b463-41f6-a86c-041272bdb340",
+            //// Insert here the application secret when authenticate with AAD by the application
+            //ActiveDirectoryClientAppSecret = "",
+
+            ActiveDirectoryResource = "https://sigerp.operations.dynamics.com", // Don't have a trailing "/". Note: Some of the sample code handles that issue.
+            ActiveDirectoryTenant = "https://login.windows.net/smart-infrastructure.com", // Some samples: https://login.windows.net/yourtenant.onmicrosoft.com, https://login.windows.net/microsoft.com
+            //https://login.microsoftonline.com/a456fbc2-921d-42a4-a7a8-fc0f343ede61
+            ActiveDirectoryClientAppId = "2dace71c-4fb9-427b-8d37-76cddb43a399",
             // Insert here the application secret when authenticate with AAD by the application
-            ActiveDirectoryClientAppSecret = "",
+            ActiveDirectoryClientAppSecret = "t3P7Q~~OM697.AZQSRgtlc8C3XMrTTaUWyhjX",
 
             // Change TLS version of HTTP request from the client here
             // Ex: TLSVersion = "1.2"
             // Leave it empty if want to use the default version
-            TLSVersion = "",
+            TLSVersion = "1.2",
         };
 
         public string TLSVersion { get; set; }

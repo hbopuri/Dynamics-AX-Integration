@@ -18,6 +18,18 @@ namespace ODataConsoleApplication
             }
         }
 
+        public static string GetReportingManager(Resources d365, string employeeEmail)
+        {
+            var employee = d365.Employees.AsEnumerable().First(x => x.PrimaryContactEmail.Equals(employeeEmail, StringComparison.OrdinalIgnoreCase));
+            var employeePosition = d365.Positions.AsEnumerable().First(x => x.WorkerPersonnelNumber.Equals(employee.PersonnelNumber, StringComparison.OrdinalIgnoreCase));
+            var reportingManagerPosition = d365.Positions.AsEnumerable().First(x => x.PositionId.Equals(employeePosition.ReportsToPositionId, StringComparison.OrdinalIgnoreCase));
+            var reportingManager = d365.Employees.AsEnumerable().First(x => x.PersonnelNumber.Equals(reportingManagerPosition.WorkerPersonnelNumber, StringComparison.OrdinalIgnoreCase));
+
+            Console.WriteLine($"{employee.FirstName} reports to {reportingManager.FirstName}");
+
+            return reportingManager.PrimaryContactEmail;
+        }
+
         public static void GetInlineQueryCount(Resources d365)
         {
             var vendorsQuery = d365.Vendors.IncludeTotalCount();
